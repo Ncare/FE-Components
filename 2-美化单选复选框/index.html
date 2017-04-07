@@ -1,0 +1,111 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>美化单选复选框</title>
+    <style>
+      .main {
+        width: 400px;
+        height: 400px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 1px solid #ccc;
+      }
+
+      .radio-group {
+        display: inline-block;
+      }
+
+      .radio-group label {
+        font-size: 14px;
+        display: inline-block;
+        position: relative;
+        white-space: nowrap;
+        cursor: pointer;
+      }
+
+      .radio {
+        white-space: nowrap;
+        line-height: 1;
+        position: relative;
+        vertical-align: middle;
+      }
+      
+      .radio input[type="radio"]:checked + span:after {
+        opacity: 1;
+      }
+
+      .radio input[type="radio"]:checked + span {
+        border-color: #39f;
+      }
+
+      .radio-inner {
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        position: relative;
+        top: 0;
+        left: 0;
+        border: 1px solid #d7dde4;
+        border-radius: 50%;
+      }
+
+      .radio-inner:after {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        left: 3px;
+        top: 3px;
+        border-radius: 6px;
+        display: table;
+        border-top: 0;
+        border-left: 0;
+        content: "";
+        background-color: #39f;
+        opacity: 0;
+        transition: all .2s ease-in-out;
+      }
+
+      .radio-input {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 1;
+        cursor: pointer;
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="radio-group">
+        <label>
+          <span class="radio">
+            <input type="radio" name="fruit" class="radio-input">
+            <span class="radio-inner"></span>
+          </span>
+          <span class="radio-name">苹果</span>
+        </label>
+        <label>
+          <span class="radio">
+            <input type="radio" name="fruit" class="radio-input">
+            <span class="radio-inner"></span>
+          </span>
+          <span class="radio-name">橘子</span>
+        </label>
+        <label>
+          <span class="radio">
+            <input type="radio" name="fruit" class="radio-input">
+            <span class="radio-inner"></span>
+          </span>
+          <span class="radio-name">橘子</span>
+        </label>
+      </div>
+    </div>
+
+  </body>
+</html>
