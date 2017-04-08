@@ -1,0 +1,78 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>美化单选复选框</title>
+    <style>
+      .main {
+        margin: 100px 200px;
+      }
+
+    
+
+
+
+      /*------------复选框------------*/
+      .checkbox-group {
+        font-size: 16px;
+      }
+
+      .checkbox-group label {
+        display: inline-block;
+      }
+
+      .checkbox {
+        display: inline-block;
+        vertical-align: middle;
+        cursor: pointer;
+        line-height: 1;
+        white-space: nowrap;
+        left: 0;
+        top: 0;
+        position: relative;
+      }
+
+      .checkbox-input {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+      .checkbox-inner {
+        width: 14px;
+        height: 14px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        border: 1px solid #d7dde4;
+      }
+
+      .checkbox-name {
+        display: inline-block;
+      }
+        
+    </style>
+  </head>
+  <body>
+    <div class="main">
+   
+
+      <div class="checkbox-group">
+        <label>
+          <span class="checkbox">
+            <input type="checkbox" value="apple" class="checkbox-input">
+            <span class="checkbox-inner"></span>
+          </span>
+          <span class="checkbox-name">苹果</span>
+        </label>
+
+        
+      </div>
+    </div>
+
+  </body>
+</html>

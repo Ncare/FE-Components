@@ -14,3 +14,5 @@ input[type="radio"]:checked + span {}
 ```
 
 > checkbox 控件
+
+与以上一致，`checkbox` 中的 对勾 用 `border` 的框去掉上边及左边，然后旋转 `45%`。
