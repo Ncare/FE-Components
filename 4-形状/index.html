@@ -1,0 +1,67 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>形状设计</title>
+    <style>
+      .main {
+        margin-top: 100px;
+        margin-left: 100px;
+      }
+      .main div {
+        margin: 10px;
+      }
+      .triangle {
+        width: 0px;
+        height: 0px;
+        border-bottom: 20px solid red;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+      }
+
+      .trapezoid {
+        width: 20px;
+        height: 0px;
+        border-bottom: 20px solid blue;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+      }
+
+      .heart {
+        width: 16px;
+        height: 20px;
+        position: relative;
+      }
+      .heart:before {
+        content: "";
+        border: 0px solid transparent;
+        border-radius: 10px 10px 0 0;
+        width: 8px;
+        height: 12px;
+        background-color: red;
+        transform: rotate(-45deg);
+        position: absolute;
+        left: 2px;
+      }
+      .heart:after {
+        content: "";
+        border: 0px solid transparent;
+        border-radius: 10px 10px 0 0;
+        width: 8px;
+        height: 12px;
+        background-color: red;
+        transform: rotate(45deg);
+        position: absolute;
+        left: 4.8px;
+        top: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+        <div class="triangle"></div>
+        <div class="trapezoid"></div>
+        <div class="heart"></div>
+    </div>
+  </body>
+</html>
