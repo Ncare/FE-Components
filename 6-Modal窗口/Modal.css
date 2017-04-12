@@ -1,0 +1,58 @@
+.mask {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: black;
+  opacity: 0.2;
+  z-index: 200;
+}
+
+.Modal {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 250;
+  background-color: white;
+  border-radius: 6px;
+  width: 450px;
+}
+
+.m-header {
+  padding:  14px 16px;
+  border-bottom: 1px solid #e3e8ee;
+  font-weight: bold;
+}
+
+.m-content {
+  padding: 16px;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+.m-footer {
+  border-top: 1px solid #e3e8ee;
+  padding: 12px 18px;
+  text-align: right;
+}
+
+.m-footer button {
+  margin-left: 8px;
+  padding: 6px 15px;
+  border-radius: 4px;
+  outline: none;
+}
+
+.m-footer button.m-confirm {
+  background-color: #39f;
+  color: white;
+  border: none;
+}
+
+.m-footer button.m-cancel {
+  color: black;
+  border: none;
+  background-color: white;
+}

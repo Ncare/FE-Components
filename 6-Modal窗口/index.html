@@ -1,0 +1,20 @@
+<!DOCTYPE>
+<HTML>
+  <head>
+    <meta charset="UTF-8">
+    <title>Modal</title>
+
+    <link rel="stylesheet" href="Modal.css">
+    <script src="Modal.js"></script>
+  </head>
+  <body>
+    <button id="open">打开</button>
+
+    <script>
+      var btn = document.getElementById('open');
+      btn.addEventListener('click', function(e){
+        var modal = new Modal();
+      })
+    </script>
+  </body>
+</HTML>
