@@ -1,0 +1,21 @@
+<!DOCTYPE>
+<HTML>
+  <head>
+    <title>顶部进度条加载</title>
+    <meta charset="UTF-8">
+
+    <script src="ProgressBar.js"></script>
+  </head>
+  <body>
+    <button id="load">加载</button>
+
+    <script>
+      var btn = document.getElementById('load');
+      btn.addEventListener('click', function(e){
+        var progress = new ProgressBar();
+
+        progress.start();
+      })
+    </script>
+  </body>
+</HTML>
