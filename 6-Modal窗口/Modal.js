@@ -1,7 +1,7 @@
 
 var Modal = (function() {
 
-  var ModalWindow = function(opt) {
+  var ModalWindow = function(opt, callback) {
 
     this.options = {
       'title': '窗口标题',
@@ -16,10 +16,11 @@ var Modal = (function() {
       }
     }
 
+
     this.mask = document.createElement('div');
     this.mask.className = 'mask';
     this.modalWindow = document.createElement('div');
-    this.modalWindow.className = 'Modal';
+    this.modalWindow.id = 'Modal';
 
     var header = document.createElement('div');
     header.className = 'm-header';
@@ -38,6 +39,12 @@ var Modal = (function() {
       cancelBtn.className = 'm-cancel';
       cancelBtn.innerHTML = '取消';
       footer.appendChild(cancelBtn);
+
+      var that = this;
+      cancelBtn.addEventListener('click', function(){
+
+        that.hide();
+      })
     }
 
     if (this.options.showConfirmButton) {
@@ -45,15 +52,37 @@ var Modal = (function() {
       confirmBtn.className = 'm-confirm';
       confirmBtn.innerHTML = '确定';
       footer.appendChild(confirmBtn);
+
+      var that = this;
+      confirmBtn.addEventListener('click', function(e){
+        callback && callback();
+
+        that.hide();
+      })
     }
 
-    
     this.modalWindow.appendChild(footer);
 
+  }
 
+
+  ModalWindow.prototype.show = function() {
     document.body.appendChild(this.mask);
+    
+    this.modalWindow.className = 'modalshow';
     document.body.appendChild(this.modalWindow);
   }
+
+  ModalWindow.prototype.hide = function() {
+    document.body.removeChild(this.mask);
+
+    var that = this;
+    this.modalWindow.className = 'modalhide';
+    this.modalWindow.addEventListener('webkitAnimationEnd', function(e){
+      document.body.removeChild(that.modalWindow);
+    })
+  }
+
 
   return ModalWindow;
 })()

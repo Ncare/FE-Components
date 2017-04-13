@@ -13,7 +13,11 @@
     <script>
       var btn = document.getElementById('open');
       btn.addEventListener('click', function(e){
-        var modal = new Modal();
+        var modal = new Modal({}, function(){
+          alert("点击了确定");
+        });
+
+        modal.show();
       })
     </script>
   </body>
