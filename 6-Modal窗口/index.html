@@ -13,7 +13,9 @@
     <script>
       var btn = document.getElementById('open');
       btn.addEventListener('click', function(e){
-        var modal = new Modal({}, function(){
+        var modal = new Modal({
+          'title': '确定要删除？',
+        }, function(){
           alert("点击了确定");
         });
 
