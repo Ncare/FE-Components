@@ -1,0 +1,31 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>提示</title>
+
+    <link rel="stylesheet" href="ToolTip.css">
+    <script src="ToolTip.js"></script>
+
+    <style>
+      .test {
+        margin-top: 200px;
+      }
+      .main {
+        margin: 100px 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="test">
+    <div class="main">
+    <button class="tip">确认</button>
+    <button class="tip">取消</button>
+    </div>
+    </div>
+
+    <script>
+      var tooltip = new Tooltip('.tip');
+    </script>
+  </body>
+</html>
