@@ -19,13 +19,15 @@
   <body>
     <div class="test">
     <div class="main">
-    <button class="tip">确认</button>
+    <button class="tip" data-title="确认">确认</button>
     <button class="tip">取消</button>
     </div>
     </div>
 
     <script>
-      var tooltip = new Tooltip('.tip');
+      var tooltip = new Tooltip('.tip', {
+        'position': 'bottom'
+      });
     </script>
   </body>
 </html>
