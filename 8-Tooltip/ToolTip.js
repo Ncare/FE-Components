@@ -99,6 +99,7 @@
     content.innerHTML = this.options.tip;
 
     var tooltip = document.querySelector('.tooltip');
+    tooltip.style.display = "inline-block";
     var t_width = tooltip.offsetWidth;
     var t_height = tooltip.offsetHeight;
 
@@ -126,12 +127,29 @@
 
       tooltip.style.left = X + el_width / 2 - t_width / 2;
       tooltip.style.top = Y + el_height + a_height;
+    } else if (this.options['position']== "left") {
+      arrow.style['transform-origin'] = '0 0';
+      arrow.style.transform = 'rotate(-90deg)';
+      arrow.style.top = t_height / 2 + a_width / 2;
+      arrow.style.left = t_width-1;
+
+      tooltip.style.left = X - t_width - a_height;
+      tooltip.style.top = Y + el_height / 2 - t_height / 2; 
+    } else if (this.options['position'] == "right") {
+      arrow.style['transform-origin'] = '0 0';
+      arrow.style.transform = 'rotate(90deg)';
+      arrow.style.top = t_height/2 - a_width / 2;
+
+      tooltip.style.left = X + el_width + a_height;
+      tooltip.style.top = Y + el_height / 2 - t_height / 2;
     }
+
 
     tooltip.style.opacity = '1';
 
     setTimeout(function (e) {
-      tooltip.style.opacity = '0'
+      tooltip.style.opacity = '0';
+      tooltip.style.display = 'none';
     }, 2000)
 
   }
