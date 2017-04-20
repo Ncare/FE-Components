@@ -7,7 +7,7 @@
       'tip': 'This is a tip!',
       'position': 'top',
       'duration': 1000,
-      'animation': 'fade'
+      'animation': 'zoomIn'  // fade fadeInDown rotate zoomIn
     };
     this.els = new Array();
 
@@ -53,40 +53,10 @@
             that.options.tip = 'That is a tip!';
           }
 
-          // 处理位置的问题
-          /*
-          var content = document.querySelector('.t-content');
-          content.innerHTML = that.options.tip;
-
-          var tooltip = document.querySelector('.tooltip');
-          var t_width = tooltip.offsetWidth;
-          var t_height = tooltip.offsetHeight;
-
-          var arrow = document.querySelector('.t-arrow');
-          var a_width = arrow.offsetWidth;
-          var a_height = arrow.offsetHeight;
-
-          arrow.style.top = t_height;
-          arrow.style.left = t_width / 2 - a_width / 2;
-
-          var X = this.offsetLeft;
-          var Y = this.offsetTop;
-
-          var el_width = this.offsetWidth;
-          var el_height = this.offsetHeight;
-
-          tooltip.style.left = X + el_width / 2 - t_width / 2;
-          tooltip.style.top = Y - t_height - a_height - 2;
-
-          tooltip.style.opacity = '1'
-
-          setTimeout(function (e) {
-            tooltip.style.opacity = '0'
-          }, 2000)
-
-          */
 
           that.doWidthPosition(this);
+          that.doWidthAnimation(this);
+
         });
 
       })(i)
@@ -120,38 +90,69 @@
 
       tooltip.style.left = X + el_width / 2 - t_width / 2;
       tooltip.style.top = Y - t_height - a_height - 2;
-    } else if (this.options['position']== "bottom") {
+    } else if (this.options['position'] == "bottom") {
       arrow.style.top = -a_height;
       arrow.style.left = t_width / 2 - a_width / 2;
       arrow.style.transform = 'rotate(180deg)';
 
       tooltip.style.left = X + el_width / 2 - t_width / 2;
       tooltip.style.top = Y + el_height + a_height;
-    } else if (this.options['position']== "left") {
+    } else if (this.options['position'] == "left") {
       arrow.style['transform-origin'] = '0 0';
       arrow.style.transform = 'rotate(-90deg)';
       arrow.style.top = t_height / 2 + a_width / 2;
-      arrow.style.left = t_width-1;
+      arrow.style.left = t_width - 1;
 
       tooltip.style.left = X - t_width - a_height;
-      tooltip.style.top = Y + el_height / 2 - t_height / 2; 
+      tooltip.style.top = Y + el_height / 2 - t_height / 2;
     } else if (this.options['position'] == "right") {
       arrow.style['transform-origin'] = '0 0';
       arrow.style.transform = 'rotate(90deg)';
-      arrow.style.top = t_height/2 - a_width / 2;
+      arrow.style.top = t_height / 2 - a_width / 2;
 
       tooltip.style.left = X + el_width + a_height;
       tooltip.style.top = Y + el_height / 2 - t_height / 2;
     }
 
 
-    tooltip.style.opacity = '1';
+    //tooltip.style.opacity = '1';
 
+    //var that = this;
+    //setTimeout(function (e) {
+    //  tooltip.style.opacity = '0';
+    //  tooltip.style.display = 'none';
+    //}, that.options.duration)
+
+  }
+
+  Tooltip.prototype.doWidthAnimation = function () {
+
+    var tooltip = document.querySelector('.tooltip');
+    //tooltip.className = 'tooltip' + ' anit-fadeInDown';
+
+    //tooltip.className = 'tooltip' + ' anti-fadeIn';
+
+    //tooltip.className = 'tooltip' + ' anti-rotate';
+
+    //tooltip.className = 'tooltip' + ' anti-zoomIn';
+
+    var animate = this.options.animation;
+
+    if(animate == "fade") {
+      tooltip.className = 'tooltip' + ' anti-fadeIn';
+    } else if (animate == "fadeInDown") {
+      tooltip.className = 'tooltip' + ' anit-fadeInDown';
+    } else if (animate == "rotate") {
+      tooltip.className = 'tooltip' + ' anti-rotate';
+    } else {
+      tooltip.className = 'tooltip' + ' anti-zoomIn';
+    }
+
+    var that = this;
     setTimeout(function (e) {
       tooltip.style.opacity = '0';
       tooltip.style.display = 'none';
-    }, 2000)
-
+    }, that.options.duration)
   }
 
   window.Tooltip = Tooltip;
