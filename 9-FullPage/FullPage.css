@@ -1,0 +1,26 @@
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.main>div {
+  width: 100%;
+  height: 100%
+}
+
+.main>div:first-child {
+  background-color: red;
+}
+
+.main>div:nth-child(2) {
+  background-color: green;
+}
+
+.main>div:nth-child(3) {
+  background-color: blue;
+}
+
+.main>div:nth-child(4) {
+  background-color: yellow;
+}
