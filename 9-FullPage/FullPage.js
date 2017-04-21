@@ -19,6 +19,12 @@
       console.assert(this.options.el != '', 'no element to display!')
     }
 
+    // 载入动画时间
+    for(var i=0; i<this.options.el.children.length; i++) {
+      this.options.el.children[i].style['transition-duration'] = this.options.duration;
+    }
+
+
     var that = this;
     this.options.el.addEventListener('mousewheel', function(e){
       var targetIndex = that.currentIndex + (e.deltaY > 0 ? 1 : -1);
@@ -57,6 +63,8 @@
       this.currentIndex = index;
     }
   }
+
+ 
 
   window.FullPage = FullPage;
 })()
