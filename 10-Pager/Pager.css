@@ -1,10 +1,10 @@
-.pager ul {
+ul.pager {
   padding: 0px;
   margin: 0px;
   list-style: none;
 }
 
-.pager ul li {
+ul.pager li {
   display: inline-block;
   height: 32px;
   width: 32px;
@@ -17,8 +17,13 @@
   cursor: pointer;
 }
 
-.pager ul li.page-active {
+ul.pager li.page-active {
   background-color: #39f;
   color: white;
   border-color: #39f;
+}
+
+.disabled {
+  cursor: not-allowed !important;
+  color: #d7dde4 !important;
 }

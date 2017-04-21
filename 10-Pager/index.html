@@ -9,17 +9,20 @@
   </head>
   <body>
     <div>
-      <div class="pager">
+      <div class="demo">
 
       </div>
     </div>
 
     <script>
-      var page = document.querySelector('.pager');
+      var page = document.querySelector('.demo');
       new Pager({
         'el': page,
         'currentPage': 1,
         'totalPage': 10
+      })
+      page.addEventListener('pageChange', function(e){
+        console.log(e.detail.page);
       })
     </script>
   </body>
