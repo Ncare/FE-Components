@@ -1,0 +1,26 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>页码</title>
+
+    <link rel="stylesheet" href="Pager.css">
+    <script src="Pager.js"></script>
+  </head>
+  <body>
+    <div>
+      <div class="pager">
+
+      </div>
+    </div>
+
+    <script>
+      var page = document.querySelector('.pager');
+      new Pager({
+        'el': page,
+        'currentPage': 1,
+        'totalPage': 10
+      })
+    </script>
+  </body>
+</html>
