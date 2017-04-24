@@ -18,17 +18,40 @@ body {
 }
 
 .main>div:first-child {
-  background-color: red;
+  background-color: #703A17;
 }
 
 .main>div:nth-child(2) {
-  background-color: green;
+  background-color: #3B832C;
 }
 
 .main>div:nth-child(3) {
-  background-color: blue;
+  background-color: #2C418C;
 }
 
 .main>div:nth-child(4) {
-  background-color: yellow;
+  background-color: #471D0C;
+}
+
+
+#navigation {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px;
+  list-style: none;
+}
+
+#navigation li {
+  width: 8px;
+  height: 8px;
+  margin: 1px 1px 24px 1px;
+  background-color: #fff;
+  border-radius: 50%;
+  opacity: 0.2;
+  transition: all 0.3s;
+}
+
+#navigation li.page_on {
+  opacity: 1;
 }

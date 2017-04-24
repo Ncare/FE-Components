@@ -24,6 +24,17 @@
       this.options.el.children[i].style['transition-duration'] = this.options.duration;
     }
 
+    // 创建指示器
+    this.navigation = document.createElement('ul');
+    this.navigation.id = 'navigation'; 
+    for(var i=0; i<this.options.el.children.length; i++) {
+      var li = document.createElement('li');
+      if(i === 0) { li.className = 'page_on' }
+      this.navigation.appendChild(li);
+    }
+    document.body.appendChild(this.navigation);
+
+
 
     var that = this;
     this.options.el.addEventListener('mousewheel', function(e){
@@ -61,6 +72,16 @@
       }
 
       this.currentIndex = index;
+
+      var nodes = this.navigation.childNodes;
+      for(var j=0; j<nodes.length; j++){
+        if(j == index-1) {
+          this.navigation.childNodes[j].className = 'page_on';
+        }else{
+          this.navigation.childNodes[j].className = '';
+        }
+      }
+
     }
   }
 
