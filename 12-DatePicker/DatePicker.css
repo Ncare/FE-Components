@@ -1,0 +1,36 @@
+
+.datepicker {
+  font-size: 12px;
+  display: inline-block;
+  border: 1px solid #ccc;
+}
+
+.datepicker-header {
+  line-height: 32px;
+  text-align: center;
+  border-bottom: 1px solid #e3e8ee;
+}
+
+.picker-prev {
+  float: left;
+  margin-left: 10px;
+}
+
+.picker-next {
+  float: right;
+  margin-right: 10px;
+}
+
+.datepicker-body {
+  padding: 10px;
+
+}
+
+.week-cell span {
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  color: #c3cbd6;
+  display: inline-block;
+}
