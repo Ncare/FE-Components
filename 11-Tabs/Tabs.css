@@ -1,0 +1,38 @@
+
+.wrapper {
+  width: 420px;
+  height: 250px;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.tabs-nav {
+  border-bottom: 1px solid #ccc;
+  font-size: 0px;
+}
+
+.tabs-nav>div {
+  display: inline-block;
+  padding: 8px 16px;
+  cursor: pointer;
+  color: #ccc;
+  font-size: 16px;
+  transition: all 0.5s;
+  border-bottom: 2px solid transparent;
+}
+
+.tabs-nav>div.active {
+  border-color: black;
+  color: black;
+}
+
+.tabs-panel {
+  padding: 12px 4px;
+}
+
+.tabs-panel>div {
+  display: none;
+  
+}
