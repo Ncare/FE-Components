@@ -9,6 +9,7 @@
   line-height: 32px;
   text-align: center;
   border-bottom: 1px solid #e3e8ee;
+  cursor: pointer;
 }
 
 .picker-prev {
@@ -26,6 +27,10 @@
 
 }
 
+.day-picker {
+  width: 168px;
+}
+
 .week-cell span {
   width: 24px;
   height: 24px;
@@ -33,4 +38,25 @@
   text-align: center;
   color: #c3cbd6;
   display: inline-block;
+}
+
+.day-cell span {
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.day-cell span:hover {
+  background-color: #e1f0fe;
+}
+
+.day-cell span.prev-month {
+  color: #c3cbd6;
+}
+
+.day-cell span.next-month {
+  color: #c3cbd6;
 }
