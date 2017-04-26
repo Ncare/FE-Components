@@ -52,12 +52,27 @@
   var DatePicker = function (opt) {
 
     this.options = {
-      'position': 'top'
+      'el':null,
+      'position': 'top',
     }
 
     this.weekID = ['日', '一', '二', '三', '四', '五', '六'];
     this.status = 'day'; // 处于选择什么内容的状态, 'month', 'year'
     this.pickDay = new dateEX();
+
+    if(opt && typeof opt === 'object') {
+      for(var key in opt) {
+        this.options[key] = opt[key];
+      }
+    }
+
+    // 判断el 是否是input标签
+    if(this.options.el == null) { return }
+    var tagName = this.options.el.nodeName;
+    console.assert(tagName == 'INPUT', '不是使用的是input标签！')
+
+    
+
     this.init().addDate();
 
     this.updateDate();
@@ -65,6 +80,10 @@
     this.updateYear();
 
     this.bindEvents();
+
+    this.moveToPosition();
+
+    return this;
   }
 
   DatePicker.prototype.init = function () {
@@ -303,9 +322,78 @@
     // 日期选择区域点击事件
     this.datepicker_body.addEventListener('click', function(e) {
 
+      var target = e.target;
+
+      if(target.matches('.day-cell span')) {
+        if(target.matches('span.prev-month')) {
+          if(that.pickDay.month == 1) {
+            that.pickDay.year = that.pickDay.year - 1;
+            that.pickDay.month = 12;
+          }else{
+            that.pickDay.month = that.pickDay.month - 1;
+          }
+
+          that.pickDay.day = parseInt(target.innerHTML);
+        } else if(target.matches('span.next-month')) {
+          if(that.pickDay.month == 12) {
+            that.pickDay.year = that.pickDay.year + 1;
+            that.pickDay.month = 1;
+          }else{
+            that.pickDay.month = that.pickDay.month + 1;
+          }
+
+          that.pickDay.day = parseInt(target.innerHTML);
+        } else {
+
+          that.pickDay.day = parseInt(target.innerHTML);
+        }
+
+        var selectedDate = that.pickDay.year + ' - ' + that.pickDay.month + ' - ' + that.pickDay.day;
+        that.options.el.dispatchEvent(new CustomEvent('dateSelected', {detail: { selectedDate }}));
+      } 
+
+      if(target.matches('.month-picker span')) {
+        
+        that.pickDay.month = parseInt(target.innerHTML);
+        that.monthLabel.innerHTML = target.innerHTML;
+        that.monthLabel.style.display = 'inline';
+
+        that.dayPart.style.display = 'block';
+        that.monthPart.style.display = 'none';
+        that.yearPart.style.display = 'none';
+
+        that.status = 'day';
+        that.updateDate();
+      }
+
+      if(target.matches('.year-picker span')) {
+        that.pickDay.year = parseInt(target.innerHTML);
+        that.yearLabel.innerHTML = target.innerHTML + '年';
+
+        that.dayPart.style.display = 'none';
+        that.monthPart.style.display = 'block';
+        that.yearPart.style.display = 'none';
+
+        that.status = 'month';
+      }
+
+
     })
   }
 
+  // 移动到制定位置
+  DatePicker.prototype.moveToPosition = function() {
+
+    var el = this.options.el;
+
+    var el_X = el.offsetLeft;
+    var el_Y = el.offsetTop;
+    var el_width = el.offsetWidth;
+    var el_height = el.offsetHeight;
+
+    this.datepicker.style.top = el_Y + el_height;
+    this.datepicker.style.left = el_X;
+  }
 
 
   DatePicker.prototype.createDOM = function (str) {

@@ -6,12 +6,41 @@
 
     <link rel="stylesheet" href="DatePicker.css">
     <script src="DatePicker.js"></script>
+
+    <style>
+      .main {
+        margin: 100px;
+      }
+
+      input {
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        height: 30px;
+        width: 200px;
+        padding: 0px 5px;
+        outline: none;
+      }
+    </style>
   </head>
 
   <body>
+
+    <div class="main">
+      <input type="text" placeholder="时间控件">
+    </div>
     
     <script>
-      var picker = new DatePicker();
+      var input = document.querySelector('input');
+      input.addEventListener('focus', function(){
+        var picker = new DatePicker({
+          'el': this
+        });
+      })
+      input.addEventListener('dateSelected', function(e){
+        this.value = e.detail.selectedDate;
+      })
+
+      
     </script>
   </body>
 </html>

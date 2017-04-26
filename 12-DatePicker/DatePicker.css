@@ -1,8 +1,10 @@
 
 .datepicker {
+  position: fixed;
   font-size: 12px;
   display: inline-block;
   border: 1px solid #ccc;
+  background-color: white;
 }
 
 .datepicker-header {
@@ -14,7 +16,7 @@
 
 .picker-prev {
   float: left;
-  margin-left: 10px;
+  padding-left: 10px;
   color: #c3cbd6
 }
 
@@ -32,7 +34,7 @@
 
 .picker-next {
   float: right;
-  margin-right: 10px;
+  padding-right: 10px;
   color: #c3cbd6;
 }
 
