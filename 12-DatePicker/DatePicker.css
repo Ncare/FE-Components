@@ -15,11 +15,29 @@
 .picker-prev {
   float: left;
   margin-left: 10px;
+  color: #c3cbd6
+}
+
+.picker-prev:hover {
+  color: #39f;
+}
+
+.picker-year-label:hover {
+  color: #39f;
+}
+
+.picker-month-label:hover {
+  color: #39f;
 }
 
 .picker-next {
   float: right;
   margin-right: 10px;
+  color: #c3cbd6;
+}
+
+.picker-next:hover {
+  color: #39f;
 }
 
 .datepicker-body {
@@ -59,4 +77,42 @@
 
 .day-cell span.next-month {
   color: #c3cbd6;
+}
+
+.month-picker {
+  width: 168px;
+}
+
+.month-picker span {
+  width: 56px;
+  height: 24px;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+  line-height: 24px;
+}
+
+.year-picker {
+  width: 168px;
+}
+
+.month-picker span.selected {
+  color: white;
+  background-color: #39f;
+  border-radius: 4px;
+}
+
+.year-picker span {
+  width: 56px;
+  height: 24px;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+  line-height: 24px;
+}
+
+.year-picker span.selected {
+  color: white;
+  background-color: #39f;
+  border-radius: 4px;
 }
