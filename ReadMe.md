@@ -10,8 +10,8 @@ http://ncare.github.io/FE/
 > 待续
 
   * [x] datepicker
-  * [] timepicker
-  * [] Carousel
-  * [] :smirk:
+  * [ ] timepicker
+  * [ ] Carousel
+  * [ ] :smirk:
 
 
