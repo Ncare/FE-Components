@@ -81,7 +81,7 @@
 
     this.bindEvents();
 
-    this.moveToPosition();
+    this.moveToPosition().hide();
 
     return this;
   }
@@ -348,8 +348,14 @@
           that.pickDay.day = parseInt(target.innerHTML);
         }
 
+        //
+        //target.className = 'selected';
+
         var selectedDate = that.pickDay.year + ' - ' + that.pickDay.month + ' - ' + that.pickDay.day;
-        that.options.el.dispatchEvent(new CustomEvent('dateSelected', {detail: { selectedDate }}));
+        //that.options.el.dispatchEvent(new CustomEvent('dateSelected', {detail: { selectedDate }}));
+        that.options.el.value = selectedDate;
+
+        that.hide();
       } 
 
       if(target.matches('.month-picker span')) {
@@ -393,6 +399,17 @@
 
     this.datepicker.style.top = el_Y + el_height;
     this.datepicker.style.left = el_X;
+
+    return this;
+  }
+
+  // 显示，隐藏
+  DatePicker.prototype.show = function() {
+    this.datepicker.style.display = 'inline-block';
+  }
+
+  DatePicker.prototype.hide = function() {
+    this.datepicker.style.display = 'none';
   }
 
 

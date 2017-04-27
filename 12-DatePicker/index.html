@@ -31,14 +31,13 @@
     
     <script>
       var input = document.querySelector('input');
-      input.addEventListener('focus', function(){
-        var picker = new DatePicker({
-          'el': this
+      var picker = new DatePicker({
+          'el': input
         });
+      input.addEventListener('focus', function(e){
+        picker.show();
       })
-      input.addEventListener('dateSelected', function(e){
-        this.value = e.detail.selectedDate;
-      })
+
 
       
     </script>

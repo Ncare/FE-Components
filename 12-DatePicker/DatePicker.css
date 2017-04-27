@@ -69,6 +69,12 @@
   cursor: pointer;
 }
 
+.day-cell span.selected {
+  background-color: #39f;
+  color: white;
+  border-radius: 4px;
+}
+
 .day-cell span:hover {
   background-color: #e1f0fe;
 }
@@ -87,11 +93,11 @@
 
 .month-picker span {
   width: 56px;
-  height: 24px;
+  height: 36px;
   text-align: center;
   display: inline-block;
   cursor: pointer;
-  line-height: 24px;
+  line-height: 36px;
 }
 
 .year-picker {
@@ -106,11 +112,11 @@
 
 .year-picker span {
   width: 56px;
-  height: 24px;
+  height: 36px;
   text-align: center;
   display: inline-block;
   cursor: pointer;
-  line-height: 24px;
+  line-height: 36px;
 }
 
 .year-picker span.selected {
