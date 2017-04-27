@@ -67,12 +67,24 @@
   text-align: center;
   display: inline-block;
   cursor: pointer;
+  position: relative;
 }
 
 .day-cell span.selected {
   background-color: #39f;
   color: white;
   border-radius: 4px;
+}
+
+.day-cell span.today:after {
+  position: absolute;
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 3px;
+  top: 0;
+  right: 0;
+  background-color: #39f;
 }
 
 .day-cell span:hover {

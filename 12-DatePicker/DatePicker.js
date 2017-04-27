@@ -153,6 +153,12 @@
 
     for (var i = 1; i <= daysInMonth; i++) {
       var cell = this.createDOM('<span>' + i + '</span>');
+      // 判断当天
+      var Today = new Date();
+      if(this.pickDay.year == Today.getFullYear() && this.pickDay.month == Today.getMonth()+1 && i == Today.getDate()) {
+        cell.className = 'today';
+      }
+
       this.dayLine.appendChild(cell);
     }
 
