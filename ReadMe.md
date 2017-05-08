@@ -12,6 +12,7 @@ http://ncare.github.io/FE/
   * [x] datepicker
   * [ ] timepicker
   * [ ] Carousel
+  * [ ] colorPicker
   * [ ] :smirk:
 
 
