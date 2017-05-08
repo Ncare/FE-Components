@@ -2,6 +2,7 @@
 .colorpicker {
   padding: 8px;
   border: 1px solid #ccc;
+  position: relative;
   display: inline-block;
 }
 
@@ -23,9 +24,57 @@
   position: absolute;
   top: 0;
   left: 0;
+  cursor: pointer;
 }
 
 .color-bar {
   height: 300px;
   width: 30px;
+  margin-left: 10px;
+  position: relative;
+}
+
+.color-slider {
+  background-color: white;
+  opacity: .5;
+  border: 1px solid #000;
+  position: absolute;
+  top: 0;
+  width: 36px;
+  left: -4px;
+  height: 10px;
+}
+
+.color-num {
+  margin-left: 10px;
+  vertical-align: bottom;
+}
+
+.cur_color {
+  width: 80px;
+  height: 80px;
+  background-color: red;
+  position: absolute;
+  top: 16px;
+  right: 30px;
+}
+
+
+.nums>label { 
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 4px;
+}
+
+.nums label input {
+  height: 20px;
+  width: 50px;
+  outline: none;
+}
+
+.nums label button {
+  background-color: white;
+  border: 1px solid black;
+  height: 20px;
 }

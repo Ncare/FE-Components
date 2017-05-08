@@ -6,6 +6,10 @@
 
 http://ncare.github.io/FE/
 
+> Tips
+
+* 几个div同级，声明为display: inline-block, 当其中一个div中包含内联元素，会出现这些div 不再同一水平线上， 采取声明 vertical-align: bottom，方式解决。
+
 
 > 待续
 
