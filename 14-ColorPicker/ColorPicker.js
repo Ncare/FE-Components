@@ -18,13 +18,15 @@
     this.init();
 
     this.curColor = new Color({
-      h: 76,
+      h: 220,
       s: 0.2,
       v: 0.8
     });
     this.curColor.hsv2rgb();
     this.curColor.rgb2hex();
     this.showColor();
+
+    this.bindEvents();
   }
 
 
@@ -33,7 +35,7 @@
     this.colorPicker = this.creatDOM('<div class="colorpicker"></div>');
     this.color_area = this.creatDOM('<div class="color-area"></div>');
     this.color_bar = this.creatDOM('<div class="color-bar"></div>');
-    this.color_num = this.creatDOM('<div class="color-num"></div>');
+    this.color_num = this.creatDOM('<div class="color-num" ></div>');
 
     // insert SVG
     var linear = '<svg  xmlns="http://www.w3.org/2000/svg" width="300px" height="300px" version="1.1">' +
@@ -76,7 +78,7 @@
     var hsb_rgb_str = '<div class="nums">' +
       '<label>H <input type="text" id="h" maxlength="3"> 度</label>' +
       '<label>S <input type="text" id="s" maxlength="3"> %</label>' +
-      '<label>B <input type="text" id="v" maxlength="3"> %</label>' +
+      '<label>V <input type="text" id="v" maxlength="3"> %</label>' +
       '<label>R <input type="text" id="r" maxlength="3"> </label>' +
       '<label>G <input type="text" id="g" maxlength="3"> </label>' +
       '<label>B <input type="text" id="b" maxlength="3"> </label>' +
@@ -127,7 +129,87 @@
   }
 
   ColorPicker.prototype.bindEvents = function () {
+    
+    // 数据框的响应
+    var that = this;
 
+    var input = document.querySelector(".nums");
+    EventHelper.addHandler(input, 'change', function(e) {
+      var target = e.target;
+      if(target == document.getElementById('h')) { 
+        var temp = parseInt(target.value);
+        if(temp <= 360) {
+          that.curColor.h = temp;
+          that.curColor.hsv2rgb();
+          that.curColor.rgb2hex();
+          that.showColor();
+        }else{
+          alert("输入0~360之间的数字");
+        }
+      } else if(target == document.getElementById('s')) {
+        var temp = parseInt(target.value)/100;
+        if(temp <= 1) {
+          that.curColor.s = temp;
+          that.curColor.hsv2rgb();
+          that.curColor.rgb2hex();
+          that.showColor();
+        } else {
+          alert("输入0~100之间的数字")
+        }      
+      } else if(target == document.getElementById('v')) {
+        var temp= parseInt(target.value)/100;
+        if(temp <= 1) {
+          that.curColor.v = temp;
+          that.curColor.hsv2rgb();
+          that.curColor.rgb2hex();
+          that.showColor();
+        } else {
+          alert("输入0~100之间的数字")
+        }  
+      } else if(target == document.getElementById('r')) {
+        var temp = parseInt(target.value);
+        if(temp <= 255) {
+          that.curColor.r = temp;
+          that.curColor.rgb2hsv();
+          that.curColor.rgb2hex();
+          that.showColor();
+        } else {
+          alert("输入0~255之间的数字")
+        }  
+      } else if(target == document.getElementById('g')) {
+        var temp = parseInt(target.value);
+        if(temp <= 255) {
+          that.curColor.g = temp;
+          that.curColor.rgb2hsv();
+          that.curColor.rgb2hex();
+          that.showColor();
+        } else {
+          alert("输入0~255之间的数字")
+        }  
+      } else if(target == document.getElementById('b')) {
+        var temp = parseInt(target.value);
+        if(temp <= 255) {
+          that.curColor.b = temp;
+          that.curColor.rgb2hsv();
+          that.curColor.rgb2hex();
+          that.showColor();
+        } else {
+          alert("输入0~255之间的数字")
+        }  
+      } else if(target == document.getElementById('hex')) {
+        temp = document.getElementById('hex').value;
+        if(parseInt(temp, 16) <= parseInt('ffffff', 16) && parseInt(temp, 16) >= 0) {
+          that.curColor.hex = temp;
+          that.curColor.hex2rgb();
+          that.curColor.rgb2hsv();
+          that.showColor();
+        } else {
+          alert("输入000000-ffffff之间的数值")
+        }  
+      } 
+    })
+    
+    // 拖拽响应
   }
 
   ColorPicker.prototype.creatDOM = function (str) {
@@ -136,6 +218,30 @@
     return div.childNodes[0];
   }
 
+
+  // 事件工具
+  var EventHelper = {
+    
+    addHandler: function(el, type, handler) {
+      if(el.addEventListener) {
+        el.addEventListener(type, handler, false);
+      }else if(el.attachEvent) {
+        el.attachEvent("on" + type, handler);
+      }else {
+        el["on" + type] = handler;
+      }
+    },
+
+    removeHandler: function(el, type, handler) {
+      if(el.removeEventListener) {
+        el.removeEventListener(type, handler, false);
+      }else if(el.detachEvent) {
+        el.detachEvent("on" + type, handler);
+      }else {
+        el["on" + type] = handler;
+      }
+    }
+  }
 
   // color 对象
   function Color(color) {
