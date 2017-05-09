@@ -21,3 +21,10 @@
 * id 为该渐变定义一个唯一标示;
 * 标签x1, x2, y1, y2 属性课定义渐变开始和结束的位置；
 * fill 填充渐变；
+
+
+
+## indicator　无鼠标事件响应
+
+`css: pointer-event: none`; 使得当拖拽indicator的时候，target目标为上一层级标签， 从而得到`offsetX` 与 `offsetY`。 indicator 就可以流畅滑动.
+

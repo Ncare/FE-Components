@@ -208,9 +208,68 @@
         }  
       } 
     })
-    
+
     // 拖拽响应
+    this.Dragging(this.color_area, this.indicatorListener(this.curColor));
+    this.Dragging(this.color_bar, this.sliderListener(this.curColor));
   }
+
+  ColorPicker.prototype.Dragging = function(el, listener) {
+    var mousedown = false;
+    var that = this;
+    // 鼠标按下
+    EventHelper.addHandler(el, 'mousedown', function(e){
+      mousedown = true;
+      if(mousedown) {
+        listener(e);
+      }
+    })
+
+    EventHelper.addHandler(el, 'mouseup', function(e){
+      mousedown = false;
+    })
+
+    EventHelper.addHandler(el, 'mouseout', function(e){
+      mousedown = false;
+    })
+
+    // 鼠标拖动
+    EventHelper.addHandler(el, 'mousemove', function(e) {
+      console.log("....")
+      if(mousedown) {
+        listener(e);
+      } 
+    })
+  }
+
+  ColorPicker.prototype.indicatorListener = function(color) {
+    var that = this;
+    return function(e) {
+      var mouse = {x: e.offsetX, y: e.offsetY};
+      var area = {width:　that.color_area.offsetWidth, height: that.color_area.offsetHeight};
+      color.s = mouse.x / area.width;
+      color.v = (area.height - mouse.y) / area.height;
+      color.hsv2rgb();
+      color.rgb2hex();
+      that.showColor(color);
+      that.color_indicator.style.top = (mouse.y - that.color_indicator.offsetHeight/2) + 'px';
+      that.color_indicator.style.left = (mouse.x - that.color_indicator.offsetWidth/2) + 'px';
+    }
+  }
+
+  ColorPicker.prototype.sliderListener = function(color) {
+    var that = this;
+    return function(e) {
+      var mouse = {x: e.offsetX, y: e.offsetY};
+      var area = {width: that.color_bar.offsetWidth, height: that.color_bar.offsetHeight};
+      color.h = (1- mouse.y / area.height) * 360;
+      color.hsv2rgb();
+      color.rgb2hex();
+      that.showColor();
+      that.color_slider.style.top = (mouse.y - that.color_slider.offsetHeight/2) + 'px';
+    }
+  }
+
 
   ColorPicker.prototype.creatDOM = function (str) {
     var div = document.createElement('div');
