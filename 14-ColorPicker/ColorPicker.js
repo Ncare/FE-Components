@@ -82,7 +82,7 @@
       '<label>R <input type="text" id="r" maxlength="3"> </label>' +
       '<label>G <input type="text" id="g" maxlength="3"> </label>' +
       '<label>B <input type="text" id="b" maxlength="3"> </label>' +
-      '<label># <input type="text" id="hex"> <button class="copy">复制</button></label>' +
+      '<label># <input type="text" id="hex"> <button id="copyColor">复制</button></label>' +
       '</div>';
 
     this.color_area.appendChild(this.creatDOM(linear));
@@ -212,6 +212,14 @@
     // 拖拽响应
     this.Dragging(this.color_area, this.indicatorListener(this.curColor));
     this.Dragging(this.color_bar, this.sliderListener(this.curColor));
+
+    // copy操作
+    var copyBtn = document.getElementById('copyColor');
+    copyBtn.addEventListener('click', function(){
+      document.getElementById('hex').select();
+      document.execCommand('Copy');
+    })
+
   }
 
   ColorPicker.prototype.Dragging = function(el, listener) {

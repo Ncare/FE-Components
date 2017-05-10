@@ -26,6 +26,7 @@
   left: 0;
   cursor: pointer;
   pointer-events: none;
+  cursor: pointer;
 }
 
 .color-bar {
@@ -45,6 +46,7 @@
   left: -4px;
   height: 10px;
   pointer-events: none;
+  cursor: pointer;
 }
 
 .color-num {
@@ -79,4 +81,5 @@
   background-color: white;
   border: 1px solid black;
   height: 20px;
+  outline: none;
 }
